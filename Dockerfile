@@ -1,5 +1,7 @@
 FROM python:2.7
 
+MAINTAINER Sullivan SENECHAL <soullivaneuh@gmail.com>
+
 RUN pip install nagios-api \
 diesel greenlet
 
