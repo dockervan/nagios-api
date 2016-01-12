@@ -1,10 +1,10 @@
-FROM python:2-slim
+FROM python:2-alpine
 
 MAINTAINER Sullivan SENECHAL <soullivaneuh@gmail.com>
 
-ADD build.sh /
-
-RUN sh build.sh
+RUN apk add --no-cache --virtual .deps gcc musl-dev libffi-dev openssl-dev \
+&& pip install nagios-api diesel greenlet \
+&& apk del .deps
 
 RUN mkdir -p /opt/nagios/var && touch /opt/nagios/var/status.dat
 
